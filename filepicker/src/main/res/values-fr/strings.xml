@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel_button_label">Annuler</string>
+    <string name="select_all_button_label">Tout Cocher</string>
+    <string name="choose_button_label">Confirmer</string>
+    <string name="label_parent_directory">Répertoire parent</string>
+    <string name="last_edit">Dernière modification: </string>
+    <string name="error_dir_access">Le dossier ne peut pas être consulté</string>
+</resources>

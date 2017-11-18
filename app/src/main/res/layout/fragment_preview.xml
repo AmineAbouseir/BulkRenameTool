@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="abouseir.amine.bulkrenametool.RenameActivity$PlaceholderFragment">
+
+    <TextView
+        android:id="@+id/title_preview_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/verify_files_rename"
+        android:textAppearance="@style/TabTextAppearance"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/btnformate"
+        android:elevation="24dp"
+        android:foreground="@drawable/bottom_shadow"
+        android:text="@string/save_files_rename"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/message_preview_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:foreground="@drawable/bottom_shadow"
+        android:gravity="center"
+        android:text="No file selected"
+        android:textAlignment="center"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/previewList"
+        style="?android:attr/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:divider="@drawable/divider"
+        android:dividerHeight="0.5dp"
+        tools:listitem="@layout/file_list_item" />
+
+</LinearLayout>
