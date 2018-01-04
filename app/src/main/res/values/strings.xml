@@ -6,10 +6,14 @@
     <string name="action_about">About</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="choose_storage">Choose Storage</string>
+    <string name="choose_option">Choose Option</string>
     <string name="text_freespace">%1$s free</string>
     <string name="select_files">Select the files to rename</string>
     <string name="open_files_browser">Click to open the files browser</string>
+    <string name="select_patterns">Select and reorder patterns</string>
+    <string name="add_patterns">Click to add patterns</string>
     <string name="selected_files_message">You have selected %1$d file(s)</string>
+    <string name="selected_patterns_message">You have added %1$d pattern(s)</string>
     <string name="save_files_rename">Click to apply change</string>
     <string name="verify_files_rename">Check out the preview</string>
 </resources>

@@ -1,33 +1,49 @@
-package abouseir.amine.bulkrenametool.sortingPatterns;
+package abouseir.amine.bulkrenametool.Patterns;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class SortByDate implements SortingPattern {
-    private boolean ascendant;
+public class SortByDate extends Pattern {
 
-    public SortByDate(boolean ascendant) {
-        this.ascendant = ascendant;
+    private boolean ascending;
+    private String name = "Sort by Date";
+
+    public SortByDate(boolean ascending) {
+        this.ascending = ascending;
     }
 
-    public ArrayList<String[]> apply(String[] listName, String[] listPath) {
-        if (this.ascendant)
-            return sortASC(listName, listPath, 1);
+    public ArrayList<String[]> apply(String[] listNewName, String[] listPath, String[] listName) {
+        if (this.ascending)
+            return sortASC(listNewName, listPath, listName);
         else {
-            return sortDEASC(listName, listPath, -1);
+            return sortDEASC(listNewName, listPath, listName);
         }
     }
 
-    private ArrayList<String[]> sortASC(String[] listName, String[] listPath, int sortType) {
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        if (ascending)
+            return "Ascending Sort";
+        else
+            return "Descending Sort";
+    }
+
+    private ArrayList<String[]> sortASC(String[] listNewName, String[] listPath, String[] listName) {
         int n = listName.length;
         ArrayList<String[]> arrayList = new ArrayList<>();
-        String[] sortedListName = new String[n];
+        String[] sortedListNewName = new String[n];
         String[] sortedListPath = new String[n];
+        String[] sortedListName = new String[n];
         for (int i = 0; i < n; i++) {
             File file = new File(listPath[i] + "/" + listName[i]);
-            String[] list = {String.valueOf(file.lastModified()), listName[i], listPath[i]};
+            String[] list = {String.valueOf(file.lastModified()), listNewName[i], listPath[i], listName[i]};
             arrayList.add(list);
         }
         Collections.sort(arrayList, new Comparator<String[]>() {
@@ -42,23 +58,26 @@ public class SortByDate implements SortingPattern {
             }
         });
         for (int i = 0; i < n; i++) {
-            sortedListName[i] = arrayList.get(i)[1];
-            sortedListPath[i] = arrayList.get(i)[2];
+            sortedListNewName[i] = arrayList.get(i)[0];
+            sortedListPath[i] = arrayList.get(i)[1];
+            sortedListName[i] = arrayList.get(i)[2];
         }
         arrayList = new ArrayList<>();
-        arrayList.add(sortedListName);
+        arrayList.add(sortedListNewName);
         arrayList.add(sortedListPath);
+        arrayList.add(sortedListName);
         return arrayList;
     }
 
-    private ArrayList<String[]> sortDEASC(String[] listName, String[] listPath, int sortType) {
+    private ArrayList<String[]> sortDEASC(String[] listNewName, String[] listPath, String[] listName) {
         int n = listName.length;
         ArrayList<String[]> arrayList = new ArrayList<>();
-        String[] sortedListName = new String[n];
+        String[] sortedListNewName = new String[n];
         String[] sortedListPath = new String[n];
+        String[] sortedListName = new String[n];
         for (int i = 0; i < n; i++) {
             File file = new File(listPath[i] + "/" + listName[i]);
-            String[] list = {String.valueOf(file.lastModified()), listName[i], listPath[i]};
+            String[] list = {String.valueOf(file.lastModified()), listNewName[i], listPath[i], listName[i]};
             arrayList.add(list);
         }
         Collections.sort(arrayList, new Comparator<String[]>() {
@@ -73,12 +92,14 @@ public class SortByDate implements SortingPattern {
             }
         });
         for (int i = 0; i < n; i++) {
-            sortedListName[i] = arrayList.get(i)[1];
-            sortedListPath[i] = arrayList.get(i)[2];
+            sortedListNewName[i] = arrayList.get(i)[0];
+            sortedListPath[i] = arrayList.get(i)[1];
+            sortedListName[i] = arrayList.get(i)[2];
         }
         arrayList = new ArrayList<>();
-        arrayList.add(sortedListName);
+        arrayList.add(sortedListNewName);
         arrayList.add(sortedListPath);
+        arrayList.add(sortedListName);
         return arrayList;
     }
 }

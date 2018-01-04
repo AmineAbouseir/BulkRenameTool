@@ -12,16 +12,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import abouseir.amine.bulkrenametool.renamePatterns.ReplacePattern;
-import abouseir.amine.bulkrenametool.sortingPatterns.SortByDate;
+import java.util.ArrayList;
+
+import abouseir.amine.bulkrenametool.Patterns.Pattern;
 
 public class RenameActivity extends AppCompatActivity {
 
     public static String[] listName = new String[0];
     public static String[] listPath = new String[0];
-    public static String[] listFullPath = new String[0];
+    public static ArrayList<Pattern> patterns = new ArrayList<>();
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -71,8 +71,8 @@ public class RenameActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
         private FilesFragment filesFragment = new FilesFragment();
+        private PatternsFragment patternsFragment = new PatternsFragment();
         private PreviewFragment previewFragment = new PreviewFragment();
-
         public PlaceholderFragment() {
         }
 
@@ -91,15 +91,13 @@ public class RenameActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup tabLayout,
                                  Bundle savedInstanceState) {
-            View rootView;
+            View rootView = null;
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 0) {
                 rootView = filesFragment.getView(inflater, tabLayout, getContext(), getActivity());
+            } else if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
+                rootView = patternsFragment.getView(inflater, tabLayout, getContext(), getActivity());
             } else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
-                rootView = previewFragment.getView(inflater, tabLayout, getContext(), getActivity(), listName, listPath, new SortByDate(true), new ReplacePattern("app", "test"));
-            } else {
-                rootView = inflater.inflate(R.layout.fragment_rename, tabLayout, false);
-                TextView textView = rootView.findViewById(R.id.section_label);
-                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                rootView = previewFragment.getView(inflater, tabLayout, getContext(), getActivity(), listName, listPath, patterns);
             }
             return rootView;
         }

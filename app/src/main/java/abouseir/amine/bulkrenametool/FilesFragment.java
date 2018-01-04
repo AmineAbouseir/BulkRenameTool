@@ -70,6 +70,8 @@ public class FilesFragment {
         this.inflater = inflater;
         this.activity = activity;
         this.context = context;
+        RenameActivity.listName = listName;
+        RenameActivity.listPath = listPath;
         return rootView;
     }
 
@@ -161,7 +163,6 @@ public class FilesFragment {
         filesList.setAdapter(filesAdapter);
         RenameActivity.listName = listName;
         RenameActivity.listPath = listPath;
-        RenameActivity.listFullPath = listFullPath;
     }
 
     public String[] getListName() {
